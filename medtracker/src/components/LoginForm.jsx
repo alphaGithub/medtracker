@@ -1,27 +1,41 @@
-import React from 'react';
 import axios from "axios";
-import { response } from 'express';
-function loginFormSubmitted(event){
-    console.log(event.target.email);
-    event.preventDefault();
-    axios.get("http://localhost:5000/login",{
-        username:event.target.email,password:event.target.password}).then(function(respose){
-        console.log(response);
-    })
-}
+import React,{useState} from 'react';
+
+
+
+//http://localhost:5000/login?username="+userName+"&password="+password
 
 function LoginForm(){
+    const [userName,setUserName] = useState("");
+    const [passWord,setPassword] = useState("");
+
+
+
+    function loginFormSubmitted(event){
+        event.preventDefault();
+        const username = event.target.username.value;
+        const password = event.target.password.value;
+        setUserName(username);
+        setPassword(password);
+        axios
+          .post("http://localhost:5000/login?username=amit@gmail.com&password=1234")
+          .then(res => {
+                console.log(res);
+          })
+          .catch(err => console.error(err));
+    }
+
     return (<div>
-        <form >
+        <form onSubmit={loginFormSubmitted}>
             <div className="mb-3">
             <label className="form-label">Email address</label>
              <input type="email" className="form-control" id="username"></input>
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
             <label className="form-label">Password</label>
-            <input type="password" class="form-control" id="password"></input>
+            <input type="password" className="form-control" id="password"></input>
             </div>
-            <button type="submit" class="btn btn-primary" >Submit</button>
+            <button type="submit" className="btn btn-primary" >Submit</button>
         </form>
     </div>);
 }

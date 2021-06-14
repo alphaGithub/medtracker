@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {userState} from 'react'
+import {BrowserRouter as Router,Switch,Route,Link  } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
+import Nav from "./Nav";
 
 function App(){
     return (<div>
-            <Header appName="MedTracker"/>
-            <h1>Hello World It is react!</h1>
+            <Header appName="Medtracker"/>
+            <Nav/>
             <Footer/>
     </div>);
 }
