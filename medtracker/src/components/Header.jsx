@@ -1,8 +1,6 @@
-import React from 'react'
-
 function Header(props){
     return (
-        <header>
+        <header style={{background:"#a1e09e"}}>
             <h1>{props.appName}</h1>
         </header>
     );
