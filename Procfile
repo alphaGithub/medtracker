@@ -1,1 +1,1 @@
-web: nodemon index.js && cd medtracker & npm start
+web: cd ./medtracker & npm start
