@@ -1,1 +1,1 @@
-web: cd ./medtracker & npm start
+web: npm start
