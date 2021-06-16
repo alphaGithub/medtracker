@@ -2,7 +2,7 @@ const {Medicine} = require('./schema');
 
 function getMedicine(req,res,next){
     const medNameRequest = req.query.medname;
-    Medicine.find({medName:{$regex:"^"+medNameRequest}},function(err,result){
+    Medicine.find({medName:{$regex:"^"+medNameRequest,$options:"i"}},function(err,result){
         if(err){
             res.send("ERROR while query");
         }
