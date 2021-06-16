@@ -1,11 +1,29 @@
 
 import {useState} from 'react';
+import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom';
+import Home from "./Search";
+import Logout from './logout';
 
 function Profile(props){
     return (<div>
-        {props.info.firstName}
-        {props.info.lastName}
-        {props.info._id}
+        Profile
+    </div>)
+}
+
+function Sidebar(){
+    return (
+        <div class="sidebar">
+            <Link to="/home">Home</Link>
+            <Link to="/profile">Profile</Link>
+            <Link to="/orders">Orders</Link>
+            <Link to="/logout">Logout</Link>
+        </div>
+    );
+}
+
+function Order(){
+    return (<div>
+        Orders;
     </div>)
 }
 function UserPage(props){
@@ -13,7 +31,19 @@ function UserPage(props){
     console.log(props);
     if(props.loginStatus===true)
     {
-        return <Profile info={props.userData}/>;
+        return (
+        <Router>
+            <Sidebar/>
+            <div class="content">
+            <Switch>
+            <Route path="/home"><Home/></Route>
+            <Route path="/profile"><Profile/></Route>
+            <Route path="/logout"><Logout/></Route>
+            </Switch>
+            
+            </div>
+        </Router>
+        );
     }
     else{
     return (<h1>False</h1>);

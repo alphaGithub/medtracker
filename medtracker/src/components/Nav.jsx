@@ -7,7 +7,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import UserPage from './User';
 
-function Tab(){
+function Nav(){
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -26,31 +26,6 @@ function Tab(){
     </div>
     </div>
   </nav>
-  );
-}
-
-function Nav(){
-    const [loginStatus,setLogin] = useState(false);
-
-    return (
-      <Router>
-      <Tab/>
-
-   
-    <div style={{width:"50%",marginLeft:"auto",marginRight:"auto",marginTop:"150px",height:"100%"}}>
-         <switch>
-            <Route exact path='/home' component={Home}></Route>
-            <Route exact path='/about' component={About}></Route>
-            <Route exact path='/contact' component={Contact}></Route>
-            <Route exact path='/login'><LoginForm /></Route>
-            <Route exact path='/signup'><SignupForm/></Route>
-            <Route path="/user"><UserPage loginStatus={false}/></Route>
-            {/*<Route path="/user/:id"><UserPage loginStatus={false}/></Route>*/}
-          </switch> 
-         
-      </div>
-      </Router>
-      
   );
 }
 

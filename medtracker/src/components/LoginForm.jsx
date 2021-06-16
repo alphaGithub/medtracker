@@ -4,7 +4,8 @@ import {BrowserRouter as Router,Switch,Route,Redirect,userLocation, useLocation 
 //import { Redirect } from "react-router-dom";
 //import { Redirect } from "react-router";
 import UserPage from "./User";
-import About from "./About";
+import Nav from "./Nav"
+
 //http://localhost:5000/login?username="+userName+"&password="+password
 
 function LoginForm(){
@@ -60,7 +61,7 @@ function LoginForm(){
     }
 
     
-    return !formDetail.loginstatus?<div style={{width:"50%",marginLeft:"auto",marginRight:"auto",marginTop:"150px",height:"100%"}}>
+    return !formDetail.loginstatus?<div><Nav/><div style={{width:"50%",marginLeft:"auto",marginRight:"auto",marginTop:"150px",height:"100%"}}>
         <form onSubmit={loginFormSubmitted}>
             <div className="mb-3">
             <label className="form-label">Email address</label>
@@ -72,7 +73,7 @@ function LoginForm(){
             </div>
             <button type="submit" className="btn btn-primary" >Submit</button>
         </form>
-    </div>:<Route to="/user"><UserPage loginStatus={formDetail.loginstatus} userData = {formDetail.data}/></Route>;
+    </div></div>:<Route to="/user"><UserPage loginStatus={formDetail.loginstatus} userData = {formDetail.data}/></Route>;
 }
 
 export default LoginForm;

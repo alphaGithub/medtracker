@@ -14,10 +14,9 @@ function App(){
     return (
             <Router>
                 <Header appName="Medtracker"/>
-                
             <switch>
-                <Route exact path="/" component={Nav}></Route>
-                <Route path='/home' component={Nav}></Route>
+                <Route exact path="/" component={Home}></Route>
+                <Route path='/home' component={Home}></Route>
                 <Route path='/about' component={About}></Route>
                 <Route path='/contact' component={Contact}></Route>
                 <Route path='/login'><LoginForm /></Route>
