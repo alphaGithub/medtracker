@@ -1,8 +1,61 @@
-function Home(){
+import axios from "axios";
+import { useState } from "react";
+
+function MedItem(props){
     return (
+            <li className="list-group-item">{props.medname}</li>
+    );
+}
+function Home(){
+    const [medList,setmedList] = useState([]);
+    const [searchMed,setMed] = useState("");
+    function searchingForMed(event){
+        //let searchMed = event.target.value;
+        const {name,value} = event.target;
+        setMed(event.target.value);
+        console.log(searchMed)
+        console.log(event.target.value);
+        if(event.target.value.length>0){
+            axios
+              .get("http://localhost:5000/medicine?medname="+event.target.value)
+              .then(res => {
+                  let data_recevied =res.data;
+                  if(data_recevied.length==0)
+                  {
+                    setmedList(prevList=>{
+                        return data_recevied;
+                    });
+                  }
+                  else{
+                      setmedList(prevList=>{
+                          return data_recevied;
+                      });
+                  }
+              })
+              .catch(err => console.error(err));
+              
+        }
+        else if(event.target.value.length==0){
+            setmedList([]);
+            setMed("");
+        }
+        
+
+    }
+    return (
+        <div style={{width:"50%",marginLeft:"auto",marginRight:"auto",marginTop:"150px",height:"100%"}}>
         <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+        <input onChange={searchingForMed} name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autoComplete="off"></input>
+       
         </form>
+        <br></br>
+        <ul class="list-group">
+        {medList.map((medItem)=>{
+            return <MedItem key={medItem._id} medname={medItem.medName}/>;
+        })
+        }
+        </ul>
+        </div>
     );
 }
 export default Home;

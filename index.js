@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/medtracker",{useNewUrlParser:true,us
 
 
 app.get("/medicine",getMedicine,(req,res)=>{
-    console.log(req);
+    console.log(req.query);
 });
 
 app.post("/login",authUser,(req,res)=>{

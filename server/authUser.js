@@ -15,5 +15,4 @@ function authUser(req,res){
         }
     });
 };
-
-module.exports = authUser; 
+ 
