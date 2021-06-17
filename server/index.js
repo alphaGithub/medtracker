@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const authUser = require('./authenticate');
 const getMedicine = require("./medicine");
-const mongoose = require('./mongoose');
+const mongoose = require('mongoose');
 const {User} = require('./schema');
 const md5 = require('md5');
 
@@ -69,7 +69,7 @@ app.post("/signup",(req,res)=>{
     
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 app.listen(port,function(err){
     if(err){
         console.log("Error while starting Express Server");

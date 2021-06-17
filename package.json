@@ -1,0 +1,24 @@
+{
+  "name": "medtracker",
+  "version": "1.0.0",
+  "description": "MERN based project",
+  "main": "./server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphaGithub/medtracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alphaGithub/medtracker/issues"
+  },
+  "homepage": "https://github.com/alphaGithub/medtracker#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "my-server-package": "file:./server"
+  }
+}
