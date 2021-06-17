@@ -10,6 +10,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+mongoose.connect("mongodb+srv://admin-amit:medtracker1234@cluster0.krpbc.mongodb.net/medtracker?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true},function(err){
+    if(err){
+        console.log("->ERROR: MONGODB CONNECTION FAILED!\n"+err);
+    }
+    else{
+        console.log("->SUCCESS: MONGODB CONNECTED SUCCESSFULLY");
+    }
+});
+/*
 mongoose.connect("mongodb://localhost:27017/medtracker",{useNewUrlParser:true,useUnifiedTopology:true},function(err){
     if(err){
         console.log("->ERROR: MONGODB CONNECTION FAILED!\n"+err);
@@ -18,6 +27,8 @@ mongoose.connect("mongodb://localhost:27017/medtracker",{useNewUrlParser:true,us
         console.log("->SUCCESS: MONGODB CONNECTED SUCCESSFULLY");
     }
 });
+*/
+
 
 
 app.get("/medicine",getMedicine,(req,res)=>{

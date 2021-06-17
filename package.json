@@ -4,11 +4,13 @@
   "description": "\"Project\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"node index.js\" \"cd medtracker && npm start\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "md5": "^2.3.0",
