@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const authUser = require('./server/authenticate');
-const getMedicine = require("./server/medicine");
-const mongoose = require('mongoose');
-const {User} = require('./server/schema');
+const authUser = require('./authenticate');
+const getMedicine = require("./medicine");
+const mongoose = require('./mongoose');
+const {User} = require('./schema');
 const md5 = require('md5');
+
+
 
 const app = express();
 app.use(express.json());
@@ -30,7 +32,6 @@ mongoose.connect("mongodb://localhost:27017/medtracker",{useNewUrlParser:true,us
     }
 });
 */
-
 
 
 app.get("/medicine",getMedicine,(req,res)=>{
@@ -68,8 +69,8 @@ app.post("/signup",(req,res)=>{
     
 });
 
-const port = process.env.EXPRESS_PORT;
-app.listen(port,'0.0.0.0',function(err){
+const port = process.env.PORT || 5000;
+app.listen(port,function(err){
     if(err){
         console.log("Error while starting Express Server");
     }
