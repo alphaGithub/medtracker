@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const authUser = require('./authenticate');
 const getMedicine = require("./medicine");
-const mongoose = require('./mongoose');
+const mongoose = require('mongoose');
 const {User} = require('./schema');
 const md5 = require('md5');
 

@@ -19,7 +19,7 @@ function Search(){
         console.log(event.target.value);
         if(event.target.value.length>0){
             axios
-              .get(process.env.REACT_APP_EXPRESS_ADDRESS+":"+process.env.REACT_APP_EXPRESS_PORT+"/medicine?medname="+event.target.value)
+              .get(process.env.REACT_APP_EXPRESS_ADDRESS+"/medicine?medname="+event.target.value)
               .then(res => {
                   let data_recevied =res.data;
                   if(data_recevied.length==0)

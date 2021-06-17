@@ -23,7 +23,7 @@ function SignupForm(){
     function signupFormSubmitted(event){
         
         axios
-          .post(process.env.REACT_APP_EXPRESS_ADDRESS+":"+process.env.REACT_APP_EXPRESS_PORT+"/signup?firstname="+signupForm.firstname+"&lastname="+signupForm.lastname+"&username="+signupForm.username+"&password="+signupForm.password)
+          .post(process.env.REACT_APP_EXPRESS_ADDRESS+"/signup?firstname="+signupForm.firstname+"&lastname="+signupForm.lastname+"&username="+signupForm.username+"&password="+signupForm.password)
           .then(res => {
                 if(res.status==200){
                     if(res.data.LOGIN=="TRUE"){
