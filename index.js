@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const authUser = require('./server/authenticate');
@@ -10,7 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://admin-amit:medtracker1234@cluster0.krpbc.mongodb.net/medtracker?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true},function(err){
+
+mongoose.connect("mongodb+srv://admin-amit:"+process.env.MONGO_PASSWORD+"@cluster0.krpbc.mongodb.net/medtracker?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true},function(err){
     if(err){
         console.log("->ERROR: MONGODB CONNECTION FAILED!\n"+err);
     }
@@ -66,5 +68,5 @@ app.post("/signup",(req,res)=>{
     
 });
 
-const port = 5000;
+const port = process.env.EXPRESS_PORT;
 app.listen(port, () => `Server running on port ${port} 🔥`);

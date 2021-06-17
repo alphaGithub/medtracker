@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import Nav from './Nav';
-
+require('dotenv').config();
 function SignupForm(){
 
     const [signupForm,setForm] =useState({
@@ -23,7 +23,7 @@ function SignupForm(){
     function signupFormSubmitted(event){
         
         axios
-          .post("http://localhost:5000/signup?firstname="+signupForm.firstname+"&lastname="+signupForm.lastname+"&username="+signupForm.username+"&password="+signupForm.password)
+          .post(process.env.REACT_APP_EXPRESS_ADDRESS+":"+process.env.REACT_APP_EXPRESS_PORT+"/signup?firstname="+signupForm.firstname+"&lastname="+signupForm.lastname+"&username="+signupForm.username+"&password="+signupForm.password)
           .then(res => {
                 if(res.status==200){
                     if(res.data.LOGIN=="TRUE"){

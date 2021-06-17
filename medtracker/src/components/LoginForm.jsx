@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Switch,Route,Redirect,userLocation, useLocation 
 //import { Redirect } from "react-router";
 import UserPage from "./User";
 import Nav from "./Nav"
+require('dotenv').config()
 
 //http://localhost:5000/login?username="+userName+"&password="+password
 
@@ -24,9 +25,9 @@ function LoginForm(){
         event.preventDefault();
         const userName = formDetail.username;
         const passWord = formDetail.password;
-
+        
         axios
-          .post("http://localhost:5000/login?username="+userName+"&password="+passWord)
+          .post(process.env.REACT_APP_EXPRESS_ADDRESS+":"+process.env.REACT_APP_EXPRESS_PORT+"/login?username="+userName+"&password="+passWord)
           .then(res => {
                 if(res.status===200){
                     if(res.data.LOGIN==="TRUE"){
