@@ -5,10 +5,10 @@ import Nav from './Nav';
 function SignupForm(){
 
     const [signupForm,setForm] =useState({
-        userName:"",
-        passWord:"",
-        firstName:"",
-        lastName:"",
+        username:"",
+        password:"",
+        firstname:"",
+        lastname:"",
     });
     
     function handleChange(event){
@@ -23,12 +23,7 @@ function SignupForm(){
     function signupFormSubmitted(event){
         
         axios
-          .post("http://localhost:5000/login",{
-              username:SignupForm.userName,
-              passWord:SignupForm.passWord,
-              firstname:SignupForm.firtName,
-              lastname:SignupForm.lastName
-          })
+          .post("http://localhost:5000/signup?firstname="+signupForm.firstname+"&lastname="+signupForm.lastname+"&username="+signupForm.username+"&password="+signupForm.password)
           .then(res => {
                 if(res.status==200){
                     if(res.data.LOGIN=="TRUE"){

@@ -1,9 +1,8 @@
 
 import {useState} from 'react';
-import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Link,Switch, Redirect} from 'react-router-dom';
 import Home from "./Search";
 import Logout from './logout';
-
 function Profile(props){
     return (<div>
         Profile
@@ -38,7 +37,9 @@ function UserPage(props){
             <Switch>
             <Route path="/home"><Home/></Route>
             <Route path="/profile"><Profile/></Route>
-            <Route path="/logout"><Logout/></Route>
+            <Route path="/logout">
+                <Redirect to="/"><Home/></Redirect>
+            </Route>
             </Switch>
             
             </div>

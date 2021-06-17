@@ -9,7 +9,7 @@ import Contact from "./Contact";
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import UserPage from './User';
-
+import Logout from './logout';
 function App(){
     return (
             <Router>
@@ -23,6 +23,7 @@ function App(){
 
                 <Route path='/signup'><SignupForm/></Route>
                 <Route path="/user/:id"><UserPage/></Route>
+                <Route exact path="/logout"><Logout/></Route>
                 </switch> 
                 <Footer/>
             </Router>

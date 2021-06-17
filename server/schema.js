@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const userSchema = {
     firstName:String,
     lastName:String,
-    email:String,
-    password:String,
+    userName:String,
+    passWord:String,
 }
 const medSchema ={
     medName:String,
