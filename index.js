@@ -69,4 +69,11 @@ app.post("/signup",(req,res)=>{
 });
 
 const port = process.env.EXPRESS_PORT;
-app.listen(port, () => `Server running on port ${port} 🔥`);
+app.listen(port,function(err){
+    if(err){
+        console.log("Error while starting Express Server");
+    }
+    else{
+        console.log("Express Server Running at ->"+port);
+    }
+});
