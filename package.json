@@ -19,7 +19,6 @@
   "homepage": "https://github.com/alphaGithub/medtracker#readme",
   "dependencies": {
     "concurrently": "^6.2.0",
-    "my-react-package": "file: ./medtracker/"
-
+    "my-react-package": "file:./medtracker"
   }
 }
