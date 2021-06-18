@@ -13,7 +13,7 @@ function Contact(){
     <div style={{width:"50%",marginLeft:"auto",marginRight:"auto",marginTop:"10px",height:"100%"}}>
         <ul style={{listStyleType:"none"}}>
         {contactName.map(contact=>{
-            return <li style={{padding:"10px 10px 10px 10px",width:"40%",float:"right"}}>
+            return <li style={{padding:"10px 10px 10px 10px",width:"30%",float:"left"}}>
             <div class="card" >
                 <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style={{"width":"100%"}}/>
                 <div class="container">
