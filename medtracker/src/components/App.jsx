@@ -1,33 +1,37 @@
-import React, {userState} from 'react'
-import {BrowserRouter as Router,Switch,Route } from "react-router-dom";
+import React, {useState,useEffect} from 'react'
+import {BrowserRouter as Router} from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
-import Nav from "./Nav";
-import Home from "./Home";
-import About from "./About"
-import Contact from "./Contact";
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
-import UserPage from './User';
-import Logout from './logout';
+import AuthApi from "../script/authApi"
+import Routes from "../routes/Route"
+import { hasSigned } from '../script/auth';
+
 function App(){
+    const [auth,setAuth] = useState(false);
+
+    const readSession = async()=>{
+        const res = await hasSigned();
+        console.log(res);
+        console.log("hello");
+        if(res.data.login){
+            setAuth(true);
+        }else{
+            setAuth(false);
+        }
+    };
+    useEffect(()=>{
+      readSession();
+    },[]);
+
+
     return (
+            <AuthApi.Provider value={{auth,setAuth}}>
             <Router>
                 <Header appName="Medtracker"/>
-            <switch>
-                <Route exact path="/" component={Home}></Route>
-                <Route path='/home' component={Home}></Route>
-                <Route path='/about' component={About}></Route>
-                <Route path='/contact' component={Contact}></Route>
-                <Route path='/login'><LoginForm /></Route>
-
-                <Route path='/signup'><SignupForm/></Route>
-                <Route path="/user/:id"><UserPage/></Route>
-                <Route exact path="/logout"><Logout/></Route>
-                </switch> 
+                <Routes/>
                 <Footer/>
-            </Router>
-           
+                </Router>
+            </AuthApi.Provider>
             );
 }
 

@@ -1,57 +1,63 @@
 import React,{useState} from 'react';
-import Nav from './Nav';
+import headers from "../script/header_allow";
 import axios from 'axios';
 require('dotenv').config();
+
+
+
 function MedItem(props){
     return (
             <li className="list-group-item">{props.medname}</li>
     );
 }
 
+
 function Search(){
     const [medList,setmedList] = useState([]);
-    const [searchMed,setMed] = useState("");
+
     function searchingForMed(event){
-        //let searchMed = event.target.value;
         const {name,value} = event.target;
-        setMed(event.target.value);
-        console.log(searchMed)
-        console.log(event.target.value);
-        if(event.target.value.length>0){
+        let medName = {[name]:value};
+
+        if(medName.medname.length>0){
             axios
-              .get(process.env.REACT_APP_EXPRESS_ADDRESS+"/medicine?medname="+event.target.value)
+              .get("/meds?medname="+medName.medname,{headers})
               .then(res => {
-                  let data_recevied =res.data;
-                  if(data_recevied.length==0)
+                  let data_recevied =res;
+                  if(data_recevied.data.errors==null)
                   {
+                    const result = data_recevied.data.result;
                     setmedList(prevList=>{
-                        return data_recevied;
+                        return result;
                     });
                   }
                   else{
+                      const msg = data_recevied.data.errors[0].msg;
                       setmedList(prevList=>{
-                          return data_recevied;
+                          return [{_id:0,medName:msg}];
                       });
                   }
               })
               .catch(err => console.error(err));
               
-        }
-        else if(event.target.value.length==0){
-            setmedList([]);
-            setMed("");
+            }
+        else if(event.target.value.length===0){
+                const msg = "";
+                setmedList(prevList=>{
+                          return [];
+                      });
         }
         
 
     }
     return (
-        <div style={{width:"50%",marginLeft:"auto",marginRight:"auto",marginTop:"150px",height:"100%"}}>
-        <form class="d-flex">
-        <input onChange={searchingForMed} name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autoComplete="off"></input>
+        <div style={{width:"100%",marginLeft:"auto",marginRight:"auto",marginTop:"150px",height:"100%"}}>
+        <form className="d-flex">
+        <input onChange={searchingForMed} name="medname" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autoComplete="off"></input>
        
         </form>
         <br></br>
-        <ul class="list-group">
+        <ul className="list-group">
         {medList.map((medItem)=>{
             return <MedItem key={medItem._id} medname={medItem.medName}/>;
         })
