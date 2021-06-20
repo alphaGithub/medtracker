@@ -1,5 +1,4 @@
 import React from 'react-dom'
-import useStyles from '../script/style';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 const contactName = [{id:1,name:"Amit Kushwaha",phone:"1234567",email:"amit@gmail.com"},
@@ -8,7 +7,7 @@ const contactName = [{id:1,name:"Amit Kushwaha",phone:"1234567",email:"amit@gmai
                     {id:4,name:"Bipin",email:"bipin@gmail.com"}];
 
 function Contact(){
-    const classes = useStyles();
+
     return (
     <div>
     <CssBaseline />

@@ -42,7 +42,6 @@ function Search(){
               
             }
         else if(event.target.value.length===0){
-                const msg = "";
                 setmedList(prevList=>{
                           return [];
                       });
