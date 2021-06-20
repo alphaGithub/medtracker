@@ -4,7 +4,6 @@ import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import DashBoard from '../components/Dashboard';
 import AuthApi from "../script/authApi"
-import Contact from '../components/Contact';
 import Home from '../components/Home';
 import About from '../components/About';
 import Logout from '../components/Logout';
@@ -23,12 +22,6 @@ function Routes() {
     </Switch>
   );
 }
-
-const RouteLogout = ({ isAuth, component: Component, ...rest }) => {
-  return (
-  <Route  {...rest}   render={(props) =>isAuth ? <Component {...props} /> : <Redirect to="/signin" />}/>
-  );
-};
 
 const RouteRegisteration = ({ isAuth, component: Component, ...rest }) => {
   return (
